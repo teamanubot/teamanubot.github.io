@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivai</title>
+</head>
+<body
+    <div id="readme-content"></div>
+    <script>
+        fetch('README.md')
+            .then(response => response.text())
+            .then(text => {
+                const readmeContent = document.getElementById('readme-content');
+                readmeContent.innerHTML = text;
+            })
+            .catch(error => {
+                console.error('Error fetching README.md:', error);
+            });
+    </script>
+    <div style="visibility:hidden">
+        <audio controls autoplay loop>
+            <source src="https://drive.google.com/uc?export=download&id=1gM-kAKFUo8o6St65uUkCQxo-W_mGv2mm" type="audio/mpeg">
+        </audio>
+    </div>
+</body>
+</html>
