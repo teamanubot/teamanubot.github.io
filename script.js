@@ -6,10 +6,10 @@ const noBtn = document.querySelector(".No-btn");
 
 yesBtn.addEventListener("click", () => {
     question.innerHTML = "Aaaaaaaaaa, I Like You too!!! :)";
-    gif.src = "https://media.tenor.com/PdSA8dcotSsAAAAC/honkai-honkai-star-rail.gif";
+    gif.src = "https://c.tenor.com/2h5AqdpGfi0AAAAC/tenor.gif";
     noBtn.style.display = "none";
     yesBtn.style.display = "none";
-    let count = 5;
+    let count = 0;
     const countdownInterval = setInterval(() => {
         const countdownElement = document.querySelector(".countdown");
         if (countdownElement) {
@@ -19,15 +19,7 @@ yesBtn.addEventListener("click", () => {
         count--;
         if (count === -1) {
             clearInterval(countdownInterval);
-            fetch('README.md')
-            .then(response => response.text())
-            .then(text => {
-                const readmeContent = document.getElementById('readme-content');
-                readmeContent.innerHTML = text;
-            })
-            .catch(error => {
-                console.error('Error fetching README.md:', error);
-            });
+            window.location.href = "README.html";
         }
     }, 1000);
 });
