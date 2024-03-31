@@ -9,13 +9,17 @@ yesBtn.addEventListener("click", () => {
     gif.src = "https://media.tenor.com/PdSA8dcotSsAAAAC/honkai-honkai-star-rail.gif";
     noBtn.style.display = "none";
     yesBtn.style.display = "none";
-    let count = 5;
+    let count = 3;
     const countdownInterval = setInterval(() => {
+        const countdownElement = document.querySelector(".countdown");
+        if (countdownElement) {
+            countdownElement.remove();
+        }
         gif.insertAdjacentHTML('afterend', `<p class="countdown">Redirecting in ${count} seconds...</p>`);
         count--;
-        if (count === 0) {
+        if (count === -1) {
             clearInterval(countdownInterval);
-            window.location.href = "readme.md";
+            window.location.href = "README.md";
         }
     }, 1000);
 });
