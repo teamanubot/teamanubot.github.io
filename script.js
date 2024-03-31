@@ -9,7 +9,7 @@ yesBtn.addEventListener("click", () => {
     gif.src = "https://c.tenor.com/2h5AqdpGfi0AAAAC/tenor.gif";
     noBtn.style.display = "none";
     yesBtn.style.display = "none";
-    let count = 0;
+    let count = 5;
     const countdownInterval = setInterval(() => {
         const countdownElement = document.querySelector(".countdown");
         if (countdownElement) {
