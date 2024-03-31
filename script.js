@@ -8,9 +8,10 @@ yesBtn.addEventListener("click", () => {
     question.innerHTML = "Aaaaaaaaaa, I Like You too!!! :)";
     gif.src = "https://media.tenor.com/PdSA8dcotSsAAAAC/honkai-honkai-star-rail.gif";
     noBtn.style.display = "none";
-    let count = 3;
+    yesBtn.style.display = "none";
+    let count = 5;
     const countdownInterval = setInterval(() => {
-        question.innerHTML = `Redirecting in ${count} seconds...`;
+        gif.insertAdjacentHTML('afterend', `<p class="countdown">Redirecting in ${count} seconds...</p>`);
         count--;
         if (count === 0) {
             clearInterval(countdownInterval);
