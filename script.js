@@ -6,7 +6,7 @@ const noBtn = document.querySelector(".No-btn");
 
 yesBtn.addEventListener("click", () => {
     question.innerHTML = "Aaaaaaaaaa, I Like You too!!! :)";
-    gif.src = "https://c.tenor.com/2h5AqdpGfi0AAAAC/tenor.gif";
+    gif.src = "https://media.tenor.com/2h5AqdpGfi0AAAAC/arlecchino-genshin-impact.gif";
     noBtn.style.display = "none";
     yesBtn.style.display = "none";
     let count = 5;
