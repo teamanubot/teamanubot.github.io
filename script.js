@@ -23,7 +23,7 @@ yesBtn.addEventListener("click", () => {
         }
         gif.insertAdjacentHTML('afterend', `<p class="countdown">Redirecting in ${count} seconds...</p>`);
         count--;
-        if (count === -1) {
+        if (count === 0) {
             clearInterval(countdownInterval);
             window.location.href = "README.html";
         }
