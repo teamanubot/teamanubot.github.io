@@ -7,7 +7,6 @@ const noBtn = document.querySelector(".No-btn");
 yesBtn.addEventListener("click", () => {
     const audio = new Audio("lagu/pirsek.mp3");
     audio.autoplay = true;
-    audio.loop = true;
     audio.controls = false;
     audio.style.display = "none";
     document.body.appendChild(audio);
@@ -23,7 +22,7 @@ yesBtn.addEventListener("click", () => {
         }
         gif.insertAdjacentHTML('afterend', `<p class="countdown">Redirecting in ${count} seconds...</p>`);
         count--;
-        if (count === 0) {
+        if (count === -1) {
             clearInterval(countdownInterval);
             window.location.href = "README.html";
         }
