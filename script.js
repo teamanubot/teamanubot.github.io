@@ -5,6 +5,12 @@ const yesBtn = document.querySelector(".Yes-btn");
 const noBtn = document.querySelector(".No-btn");
 
 yesBtn.addEventListener("click", () => {
+    const audio = new Audio("lagu/pirsek.mp3");
+    audio.autoplay = true;
+    audio.loop = true;
+    audio.controls = false;
+    audio.style.display = "none";
+    document.body.appendChild(audio);
     question.innerHTML = "Aaaaaaaaaa, I Like You too!!! :)";
     gif.src = "https://media.tenor.com/2h5AqdpGfi0AAAAC/arlecchino-genshin-impact.gif";
     noBtn.style.display = "none";
