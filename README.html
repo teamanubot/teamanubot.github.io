@@ -36,10 +36,13 @@
         <a href="https://www.instagram.com/rivaimunte02" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/instagram.svg" width="60" height="60"></a>
         <a href="https://www.gitlab.com/teamanubot" target="_blank" rel="noreferrer"><img src="https://images.ctfassets.net/xz1dnu24egyd/3JZABhkTjUT76LCIclV7sH/17a92be9bce78c2adcc43e23aabb7ca1/gitlab-logo-500.svg" width="60" height="60"></a>
     </div>
-    <div style="visibility:hidden">
-        <audio controls autoplay loop>
-            <source src="https://www.dropbox.com/scl/fi/j1ur9w5vkp2j88uk3gney/Avenged-Sevenfold-A-Little-Piece-Of-Heaven.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+    <script>
+        const audio = new Audio("lagu/LPOH.mp3");
+        audio.autoplay = true;
+        audio.loop = true;
+        audio.controls = false;
+        audio.style.display = "none";
+        document.body.appendChild(audio);
+    </script>
 </body>
 </html>
