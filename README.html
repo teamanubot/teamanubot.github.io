@@ -1,48 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rivai Munte</title>
-</head>
-<body>
-    <div style="text-align: center;">
-        <a href="https://git.io/typing-svg">
-            <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=F70606&center=true&random=false&width=435&lines=Hai+saya+Rivai;Kamu+bisa+panggil+saya+Munte;Hanya+manusia+biasa+yang+penasaran" alt="Typing SVG" />
-        </a>
-    </div>
-    <hr>
-    <br>
-    <br>
-    <div style="text-align: center; font-size: 2em; font-weight: bold;">
-        Statistik Github
-    </div>
-    <hr>
-    <div style="text-align: center;">
-        <img height="auto" width="auto" src="https://github-readme-stats.vercel.app/api/top-langs/?username=teamanubot&langs_count=9&show_icons=true&theme=radical&layout=compact">
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rivai Munte</title>
+    </head>
+    <body>
+        <div style="text-align: center;">
+            <a href="https://git.io/typing-svg">
+                <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=F70606&center=true&random=false&width=435&lines=Hai+saya+Rivai;Kamu+bisa+panggil+saya+Munte;Hanya+manusia+biasa+yang+penasaran" alt="Typing SVG" />
+            </a>
+        </div>
+        <hr>
         <br>
-        <img height="auto" width="auto" src="https://github-readme-stats.vercel.app/api?username=teamanubot&show_icons=true&theme=radical&hide_border=true&hide=issues,contribs">
         <br>
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=teamanubot&theme=radical">
-    </div>
-    <br>
-    <br>
-    <div style="text-align: center; font-size: 2em; font-weight: bold;">
-        Sosial Media
-    </div>
-    <hr>
-    <div style="text-align: center;">
-        <a href="https://www.github.com/teamanubot" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="60" height="60"></a>
-        <a href="https://www.instagram.com/rivaimunte02" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/instagram.svg" width="60" height="60"></a>
-        <a href="https://www.gitlab.com/teamanubot" target="_blank" rel="noreferrer"><img src="https://images.ctfassets.net/xz1dnu24egyd/3JZABhkTjUT76LCIclV7sH/17a92be9bce78c2adcc43e23aabb7ca1/gitlab-logo-500.svg" width="60" height="60"></a>
-    </div>
-    <script>
-        const audio = new Audio("lagu/LPOH.mp3");
-        audio.autoplay = true;
-        audio.loop = true;
-        audio.controls = false;
-        audio.style.display = "none";
-        document.body.appendChild(audio);
-    </script>
-</body>
+        <div style="text-align: center; font-size: 2em; font-weight: bold;">
+            Statistik Github
+        </div>
+        <hr>
+        <div style="text-align: center;">
+            <img height="auto" width="auto" src="https://github-readme-stats.vercel.app/api/top-langs/?username=teamanubot&langs_count=9&show_icons=true&theme=radical&layout=compact" />
+            <br>
+            <img height="auto" width="auto" src="https://github-readme-stats.vercel.app/api?username=teamanubot&show_icons=true&theme=radical&hide_border=true&hide=issues,contribs" />
+            <br>
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=teamanubot&theme=radical" />
+        </div>
+        <br>
+        <br>
+        <div style="text-align: center; font-size: 2em; font-weight: bold;">
+            GitHub Activity
+        </div>
+        <hr>
+        <div style="text-align: center;">
+            <img alt="TeamAnuBot's Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=teamanubot&theme=chartreuse-dark&custom_title=TeamAnuBot's%20contribution%20graph&hide_border=true" />
+        </div>
+        <br>
+        <br>
+        <div style="text-align: center; font-size: 2em; font-weight: bold;">
+            Sosial Media
+        </div>
+        <hr>
+        <div style="text-align: center;">
+            <a href="https://www.github.com/teamanubot" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="60" height="60" /></a>
+            <a href="https://www.instagram.com/rivaimunte02" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/instagram.svg" width="60" height="60" /></a>
+            <a href="https://www.gitlab.com/teamanubot" target="_blank" rel="noreferrer"><img src="https://images.ctfassets.net/xz1dnu24egyd/3JZABhkTjUT76LCIclV7sH/17a92be9bce78c2adcc43e23aabb7ca1/gitlab-logo-500.svg" width="60" height="60" /></a>
+        </div>
+        <audio id="audio1" src="lagu/C-KM-AY.mp3" autoplay style="display: none;"></audio>
+        <audio id="audio2" src="lagu/LPOH.mp3" style="display: none;"></audio>
+        <script>
+            const audio1 = document.getElementById("audio1");
+            const audio2 = document.getElementById("audio2");
+            audio1.addEventListener("ended", function() {
+                audio2.play();
+            });
+            audio2.addEventListener("ended", function() {
+                audio1.play();
+            });
+        </script>
+    </body>
 </html>
