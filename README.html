@@ -5,6 +5,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rivai Munte</title>
     </head>
+    <style>
+        /* CSS untuk overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .play-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
     <body>
         <div style="text-align: center;">
             <a href="https://github.com/teamanubot">
@@ -45,18 +83,25 @@
             <a href="https://www.instagram.com/rivaimunte02" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/instagram.svg" width="60" height="60" /></a>
             <a href="https://www.gitlab.com/teamanubot" target="_blank" rel="noreferrer"><img src="https://images.ctfassets.net/xz1dnu24egyd/3JZABhkTjUT76LCIclV7sH/17a92be9bce78c2adcc43e23aabb7ca1/gitlab-logo-500.svg" width="60" height="60" /></a>
         </div>
-        <div id="manualPlay" style="text-align: center; display: none;">
-            <br>
-            <br>
-            <button onclick="startAudio()">Play Audio</button>
+        <div class="overlay" id="playOverlay">
+            <div class="overlay-content">
+                <button class="close-button" onclick="closeOverlay()">Close</button>
+                <button class="play-button" onclick="startAudio()">Play Audio</button>
+            </div>
         </div>
         <audio id="audio1" src="lagu/C-KM-AY.mp3" autoplay style="display: none;"></audio>
         <audio id="audio2" src="lagu/LPOH.mp3" style="display: none;"></audio>
         <script>
             const audio1 = document.getElementById("audio1");
             const audio2 = document.getElementById("audio2");
-            if (performance.navigation.type === 1) {
-                document.getElementById("manualPlay").style.display = "block";
+            window.onload = function() {
+                showPlayOverlay();
+            };
+            function showPlayOverlay() {
+                document.getElementById("playOverlay").style.display = "block";
+            }
+            function closeOverlay() {
+                document.getElementById("playOverlay").style.display = "none";
             }
             function startAudio() {
                 audio1.play().catch(error => {
@@ -64,6 +109,7 @@
                         audio1.requestAutoplay();
                     }
                 });
+                closeOverlay();
             }
             audio1.addEventListener("ended", function() {
                 audio2.play();
