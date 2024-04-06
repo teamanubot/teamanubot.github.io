@@ -109,15 +109,6 @@
         <script>
             const audio1 = document.getElementById("audio1");
             const audio2 = document.getElementById("audio2");
-            window.onload = function() {
-                if (performance.navigation.type === 0) {
-                    startAudio();
-                } else if (performance.navigation.type === 1) {
-                    showPlayOverlay();
-                } else {
-                    startAudio();
-                }
-            };
             function showPlayOverlay() {
                 document.getElementById("playOverlay").style.display = "block";
             }
@@ -125,20 +116,21 @@
                 document.getElementById("playOverlay").style.display = "none";
             }
             function playOverlay() {
-                audio1.play().catch(error => {
-                    if (error.name === 'NotAllowedError') {
-                        audio1.requestAutoplay();
-                    }
-                });
-                closeOverlay();
-            }
-            function startAudio() {
-                audio1.play().catch(error => {
+                audio1.play()then(() => {
+                    closeOverlay();
+                }).catch(error => {
+                    showPlayOverlay();
                     if (error.name === 'NotAllowedError') {
                         audio1.requestAutoplay();
                     }
                 });
             }
+            window.onload = function() {
+                if (performance.navigation.type === 1 || performance.navigation.type === 2) {
+                    showPlayOverlay();
+                }
+                playOverlay();
+            };
             audio1.addEventListener("ended", function() {
                 audio2.play();
             });
