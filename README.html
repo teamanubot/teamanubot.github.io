@@ -109,9 +109,11 @@
         <script>
             const audio1 = document.getElementById("audio1");
             const audio2 = document.getElementById("audio2");
-            window.onload = function() {
+            const isFirstLoad = !localStorage.getItem('isFirstLoad');
+            if (isFirstLoad) {
                 showPlayOverlay();
-            };
+                localStorage.setItem('isFirstLoad', 'false');
+            }
             function showPlayOverlay() {
                 document.getElementById("playOverlay").style.display = "block";
             }
