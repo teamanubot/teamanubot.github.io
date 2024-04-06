@@ -9,18 +9,16 @@
         .overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-        .overlay-content {
-            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .overlay-content {
+            position: relative;
             text-align: center;
         }
         .play-button, .close-button {
@@ -30,16 +28,23 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            margin: 10px;
         }
         .close-button {
             position: absolute;
             top: 10px;
             right: 10px;
         }
-        .background-gif {
+        .background-gif-container {
+            position: relative;
             width: 336px;
             height: 280px;
             border-radius: 10px;
+            overflow: hidden;
+        }
+        .background-gif {
+            width: 100%;
+            height: 100%;
         }
     </style>
     <body>
@@ -84,10 +89,10 @@
         </div>
         <div class="overlay" id="playOverlay">
             <div class="overlay-content">
-                <div style="position: relative;">
+                <div class="background-gif-container">
                     <img src="https://media.tenor.com/2h5AqdpGfi0AAAAC/arlecchino-genshin-impact.gif" alt="Background GIF" class="background-gif">
-                    <button class="close-button" onclick="closeOverlay()">X</button>
                     <button class="play-button" onclick="startAudio()">Play Audio</button>
+                    <button class="close-button" onclick="closeOverlay()">X</button>
                 </div>
             </div>
         </div>
@@ -113,7 +118,6 @@
                 });
                 closeOverlay();
             }
-    
             audio1.addEventListener("ended", function() {
                 audio2.play();
             });
