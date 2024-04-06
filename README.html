@@ -98,20 +98,24 @@
                 <div class="background-gif-container">
                     <img src="https://media.tenor.com/2h5AqdpGfi0AAAAC/arlecchino-genshin-impact.gif" alt="Background GIF" class="background-gif">
                     <div class="play-button-container">
-                        <button class="play-button" onclick="startAudio()">Play Audio</button>
+                        <button class="play-button" onclick="playOverlay()">Play Audio</button>
                     </div>
                     <button class="close-button" onclick="closeOverlay()">X</button>
                 </div>
             </div>
         </div>
-        <audio id="audio1" src="lagu/C-KM-AY.mp3" autoplay style="display: none;"></audio>
+        <audio id="audio1" src="lagu/C-KM-AY.mp3" style="display: none;"></audio>
         <audio id="audio2" src="lagu/LPOH.mp3" style="display: none;"></audio>
         <script>
             const audio1 = document.getElementById("audio1");
             const audio2 = document.getElementById("audio2");
             window.onload = function() {
-                if (performance.navigation.type === 1 || performance.navigation.type === 2) {
+                if (performance.navigation.type === 0) {
+                    startAudio();
+                } else if (performance.navigation.type === 1) {
                     showPlayOverlay();
+                } else {
+                    startAudio();
                 }
             };
             function showPlayOverlay() {
@@ -120,13 +124,20 @@
             function closeOverlay() {
                 document.getElementById("playOverlay").style.display = "none";
             }
-            function startAudio() {
+            function playOverlay() {
                 audio1.play().catch(error => {
                     if (error.name === 'NotAllowedError') {
                         audio1.requestAutoplay();
                     }
                 });
                 closeOverlay();
+            }
+            function startAudio() {
+                audio1.play().catch(error => {
+                    if (error.name === 'NotAllowedError') {
+                        audio1.requestAutoplay();
+                    }
+                });
             }
             audio1.addEventListener("ended", function() {
                 audio2.play();
