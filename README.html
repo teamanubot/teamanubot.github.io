@@ -109,15 +109,22 @@
         <script>
             const audio1 = document.getElementById("audio1");
             const audio2 = document.getElementById("audio2");
-            if (performance.navigation.type === 1) {
-                document.getElementById("playOverlay").style.display = "block";
-            }
             function showPlayOverlay() {
                 document.getElementById("playOverlay").style.display = "block";
             }
             function closeOverlay() {
                 document.getElementById("playOverlay").style.display = "none";
             }
+            window.onload = function() {
+                if (performance.navigation.type === 1) {
+                    showPlayOverlay();
+                }
+            };
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible') {
+                    showPlayOverlay();
+                }
+            });
             function startAudio() {
                 audio1.play().catch(error => {
                     if (error.name === 'NotAllowedError') {
