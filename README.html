@@ -116,14 +116,13 @@
                 document.getElementById("playOverlay").style.display = "none";
             }
             function playOverlay() {
-                audio1.play()then(() => {
-                    closeOverlay();
-                }).catch(error => {
+                audio1.play().catch(error => {
                     showPlayOverlay();
                     if (error.name === 'NotAllowedError') {
                         audio1.requestAutoplay();
                     }
                 });
+                closeOverlay();
             }
             window.onload = function() {
                 if (performance.navigation.type === 1 || performance.navigation.type === 2) {
