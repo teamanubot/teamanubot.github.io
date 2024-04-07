@@ -34,12 +34,13 @@ window.onload = function() {
         if (navigationType === "reload" || navigationType === "back_forward" || navigationType === "reserved") {
             showPlayOverlay();
             break;
+        } else if (navigationType === "navigate") {
+            playOverlay();
         }
     }
     window.addEventListener("popstate", function(event) {
         showPlayOverlay();
     });
-    playOverlay();
 };
 
 audio1.addEventListener("ended", function() {
