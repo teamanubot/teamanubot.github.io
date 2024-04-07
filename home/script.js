@@ -20,7 +20,7 @@ function playOverlay() {
 }
 
 window.onload = function() {
-    if (performance.navigation.type === 1 || performance.navigation.type === 2) {
+    if (performancenavigation.type === 1 || performancenavigation.type === 2) {
         showPlayOverlay();
     }
     playOverlay();
