@@ -38,10 +38,11 @@ window.onload = function() {
             playOverlay();
         }
     }
-    window.addEventListener("popstate", function(event) {
-        showPlayOverlay();
-    });
 };
+
+window.addEventListener("popstate", function(event) {
+    showPlayOverlay();
+});
 
 audio1.addEventListener("ended", function() {
     audio2.play();
