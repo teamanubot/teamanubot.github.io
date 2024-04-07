@@ -19,6 +19,13 @@ function playOverlay() {
     closeOverlay();
 }
 
+window.onload = function () {
+    if (performance.navigation.type === 1 || performance.navigation.type === 2) {
+        showPlayOverlay();
+    }
+    playOverlay();
+};
+
 audio1.addEventListener("ended", function () {
     audio2.play();
 });
