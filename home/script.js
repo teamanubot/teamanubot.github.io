@@ -31,17 +31,14 @@ window.onload = function() {
     const navigationEntries = performance.getEntriesByType("navigation");
     for (const entry of navigationEntries) {
         const navigationType = entry.type;
-        if (navigationType === "reload") {
-            showPlayOverlay();
-            break;
-        } else if (navigationType === "back_forward") {
-            showPlayOverlay();
-            break;
-        } else if (navigationType === "reserved") {
+        if (navigationType === "reload" || navigationType === "back_forward" || navigationType === "reserved") {
             showPlayOverlay();
             break;
         }
     }
+    window.addEventListener("popstate", function(event) {
+        showPlayOverlay();
+    });
     playOverlay();
 };
 
