@@ -19,9 +19,28 @@ function playOverlay() {
     closeOverlay();
 }
 
+/* Versi Kuno
 window.onload = function() {
-    if (performancenavigation.type === 1 || performancenavigation.type === 2) {
+    if (performance.navigation.type === 1 || performance.navigation.type === 2) {
         showPlayOverlay();
+    }
+    playOverlay();
+};*/
+
+window.onload = function() {
+    const navigationEntries = performance.getEntriesByType("navigation");
+    for (const entry of navigationEntries) {
+        const navigationType = entry.type;
+        if (navigationType === "reload") {
+            showPlayOverlay();
+            break;
+        } else if (navigationType === "back_forward") {
+            showPlayOverlay();
+            break;
+        } else if (navigationType === "reserved") {
+            showPlayOverlay();
+            break;
+        }
     }
     playOverlay();
 };
