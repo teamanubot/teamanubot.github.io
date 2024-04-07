@@ -11,7 +11,6 @@ function closeOverlay() {
 
 function playOverlay() {
     audio1.play().catch(error => {
-        showPlayOverlay();
         if (error.name === 'NotAllowedError') {
             audio1.requestAutoplay();
         }
@@ -21,6 +20,7 @@ function playOverlay() {
 
 function autoPlayAudio() {
     audio1.play().catch(error => {
+        showPlayOverlay();
         if (error.name === 'NotAllowedError') {
             audio1.requestAutoplay();
         }
@@ -44,9 +44,6 @@ window.onload = function() {
             break;
         }
     }
-    window.addEventListener("pageshow", function(event) {
-        showPlayOverlay();
-    });
     autoPlayAudio();
 };
 
