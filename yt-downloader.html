@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader</title>
+    </head>
+    <body>
+        <h1>YouTube Downloader</h1>
+        <div>
+            <label for="videoUrl">YouTube Video URL:</label>
+            <input type="text" id="videoUrl" placeholder="Enter YouTube video URL">
+            <button onclick="downloadVideo()">Download</button>
+        </div>
+        <script>
+        function downloadVideo() {
+            var videoUrl = document.getElementById('videoUrl').value;
+            fetch('https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=' + getVideoId(videoUrl) + '&key=AIzaSyBJXs9wgj91mr2hxmo4n-TiaviUeu_E_YI', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.items && data.items.length > 0) {
+                    var videoId = data.items[0].id;
+                    var duration = data.items[0].contentDetails.duration;
+                    var videoTitle = data.items[0].snippet.title;           
+                    fetch('https://www.youtubepp.com/api/ajax.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: 'url=' + encodeURIComponent('https://www.youtube.com/watch?v=' + videoId),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            var downloadUrl = data.download_url;
+                            fetch(downloadUrl)
+                            .then(response => response.blob())
+                            .then(blob => {
+                                var url = window.URL.createObjectURL(blob);
+                                var a = document.createElement('a');
+                                a.href = url;
+                                a.download = videoTitle + '.mp4';
+                                document.body.appendChild(a);
+                                a.click();
+                                window.URL.revokeObjectURL(url);
+                            })
+                            .catch(error => console.error('Error:', error));
+                        } else {
+                            console.error('Error:', data.message);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                } else {
+                    console.error('Error: Unable to fetch video details.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+        function getVideoId(videoUrl) {
+            var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+            var match = videoUrl.match(regExp);
+            if (match && match[2].length === 11) {
+                return match[2];
+            } else {
+                console.error('Error: Invalid YouTube video URL.');
+                return '';
+            }
+        }
+        </script>
+    </body>
+</html>
