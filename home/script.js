@@ -19,6 +19,14 @@ function playOverlay() {
     closeOverlay();
 }
 
+function autoPlayAudio() {
+    audio1.play().catch(error => {
+        if (error.name === 'NotAllowedError') {
+            audio1.requestAutoplay();
+        }
+    });
+}
+
 /* Versi Kuno
 window.onload = function() {
     if (performance.navigation.type === 1 || performance.navigation.type === 2) {
@@ -34,10 +42,9 @@ window.onload = function() {
         if (navigationType === "reload" || navigationType === "back_forward" || navigationType === "reserved") {
             showPlayOverlay();
             break;
-        } else if (navigationType === "navigate") {
-            playOverlay();
         }
     }
+    autoPlayAudio();
 };
 
 window.addEventListener("popstate", function(event) {
