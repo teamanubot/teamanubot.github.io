@@ -27,13 +27,6 @@ function autoPlayAudio() {
     });
 }
 
-function checkNavigation() {
-    const previousUrl = sessionStorage.getItem("previousUrl");
-    if (previousUrl && previousUrl.includes("teamanubot.github.io") && !window.location.href.includes("teamanubot.github.io")) {
-        showPlayOverlay();
-    }
-}
-
 /* Versi Kuno
 window.onload = function() {
     if (performance.navigation.type === 1 || performance.navigation.type === 2) {
@@ -41,10 +34,6 @@ window.onload = function() {
     }
     playOverlay();
 };*/
-
-document.addEventListener("DOMContentLoaded", function() {
-    showPlayOverlay();
-});
 
 window.onload = function() {
     const navigationEntries = performance.getEntriesByType("navigation");
@@ -55,21 +44,11 @@ window.onload = function() {
             break;
         }
     }
+    window.addEventListener("popstate", function(event) {
+        showPlayOverlay();
+    });
     autoPlayAudio();
 };
-
-window.addEventListener("popstate", function(event) {
-    checkNavigation();
-});
-
-window.addEventListener("load", function() {
-    const historyLength = history.length;
-    if (historyLength > sessionStorage.getItem("previousHistoryLength")) {
-        showPlayOverlay();
-    }
-    sessionStorage.setItem("previousHistoryLength", historyLength);
-    sessionStorage.setItem("previousUrl", document.referrer);
-});
 
 audio1.addEventListener("ended", function() {
     audio2.play();
