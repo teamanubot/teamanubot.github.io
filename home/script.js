@@ -47,7 +47,7 @@ window.onload = function() {
     autoPlayAudio();
 };
 
-window.addEventListener("popstate", function(event) {
+window.addEventListener("pageshow", function(event) {
     showPlayOverlay();
 });
 
