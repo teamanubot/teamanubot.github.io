@@ -24,7 +24,7 @@ yesBtn.addEventListener("click", () => {
         count--;
         if (count === -1) {
             clearInterval(countdownInterval);
-            window.location.href = "home/index.html";
+            window.location.href = "home";
         }
     }, 1000);
 });
