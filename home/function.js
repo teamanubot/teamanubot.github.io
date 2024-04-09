@@ -11,15 +11,6 @@ function closeOverlay() {
     document.getElementById("playOverlay").style.display = "none";
 }
 
-/* function playOverlay() {
-    audio1.play().catch(error => {
-        if (error.name === 'NotAllowedError') {
-            audio1.requestAutoplay();
-        }
-    });
-    closeOverlay();
-} */
-
 function autoPlayAudio() {
     audio1.play().catch(error => {        
         if (error.name === 'NotAllowedError') {
