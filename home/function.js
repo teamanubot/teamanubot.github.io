@@ -15,8 +15,8 @@ function closeOverlay() {
 }
 
 function autoPlayAudio() {
+    statusPlay = true;
     audioList[0].play().then(() => {
-        statusPlay = true;
         closeOverlay();
     }).catch(error => {        
         if (error.name === 'NotAllowedError') {

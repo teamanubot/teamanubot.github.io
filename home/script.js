@@ -26,22 +26,6 @@ audioList.forEach((audio, index) => {
     });
 });
 
-audio1.addEventListener("pause", function() {
-    statusPlay = false;
-});
-
-audio2.addEventListener("pause", function() {
-    statusPlay = false;
-});
-
-audio3.addEventListener("pause", function() {
-    statusPlay = false;
-});
-
-audio4.addEventListener("pause", function() {
-    statusPlay = false;
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     if (statusPlay) {
         closeOverlay();
