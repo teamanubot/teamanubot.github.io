@@ -1,14 +1,14 @@
 window.onload = function() {
     autoPlayAudio();
     window.addEventListener('popstate', function(event) {
-        if (audio1.paused || !audio1.autoplay) {
+        if (!statusPlay) {
             showPlayOverlay();
         } else {
             closeOverlay();
         }
     });
     window.addEventListener('pageshow', function(event) {
-        if (audio1.paused || !audio1.autoplay) {
+        if (!statusPlay) {
             showPlayOverlay();
         } else {
             closeOverlay();
@@ -33,7 +33,7 @@ audio4.addEventListener("ended", function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    if (!audio1.paused && audio1.autoplay) {
+    if (statusPlay) {
         closeOverlay();
     }
 });

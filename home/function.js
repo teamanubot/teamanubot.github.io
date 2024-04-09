@@ -2,6 +2,7 @@ const audio1 = document.getElementById("audio1");
 const audio2 = document.getElementById("audio2");
 const audio3 = document.getElementById("audio3");
 const audio4 = document.getElementById("audio4");
+let statusPlay = false;
 
 function showPlayOverlay() {
     document.getElementById("playOverlay").style.display = "block";
@@ -14,8 +15,10 @@ function closeOverlay() {
 function autoPlayAudio() {
     audio1.play().catch(error => {        
         if (error.name === 'NotAllowedError') {
+            statusPlay = false;
             showPlayOverlay();
         }
     });
+    statusPlay = true;
     closeOverlay();
 }
