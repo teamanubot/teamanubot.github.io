@@ -1,5 +1,7 @@
 const audio1 = document.getElementById("audio1");
 const audio2 = document.getElementById("audio2");
+const audio3 = document.getElementById("audio3");
+const audio4 = document.getElementById("audio4");
 
 function showPlayOverlay() {
     document.getElementById("playOverlay").style.display = "block";
@@ -52,5 +54,13 @@ audio1.addEventListener("ended", function() {
 });
 
 audio2.addEventListener("ended", function() {
+    audio3.play();
+});
+
+audio3.addEventListener("ended", function() {
+    audio4.play();
+});
+
+audio4.addEventListener("ended", function() {
     audio1.play();
 });
