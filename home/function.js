@@ -20,11 +20,11 @@ function playOverlay() {
     closeOverlay();
 }
 
-function autoPlayAudio() {
+/* function autoPlayAudio() {
     audio1.play().catch(error => {
         showPlayOverlay();
         if (error.name === 'NotAllowedError') {
             audio1.requestAutoplay();
         }
     });
-}
+} */

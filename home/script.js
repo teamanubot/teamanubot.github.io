@@ -15,7 +15,6 @@ window.onload = function() {
             break;
         }
     }
-    autoPlayAudio();
 };
 
 audio1.addEventListener("ended", function() {
