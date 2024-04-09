@@ -16,20 +16,30 @@ window.onload = function() {
     });
 };
 
-audio1.addEventListener("ended", function() {
-    audio2.play();
+audioList.forEach((audio, index) => {
+    audio.addEventListener("ended", function() {
+        const nextIndex = (index + 1) % audioList.length;
+        audioList[nextIndex].play();
+    });
+    audio.addEventListener("pause", function() {
+        statusPlay = false;
+    });
 });
 
-audio2.addEventListener("ended", function() {
-    audio3.play();
+audio1.addEventListener("pause", function() {
+    statusPlay = false;
 });
 
-audio3.addEventListener("ended", function() {
-    audio4.play();
+audio2.addEventListener("pause", function() {
+    statusPlay = false;
 });
 
-audio4.addEventListener("ended", function() {
-    audio1.play();
+audio3.addEventListener("pause", function() {
+    statusPlay = false;
+});
+
+audio4.addEventListener("pause", function() {
+    statusPlay = false;
 });
 
 document.addEventListener('DOMContentLoaded', function() {
