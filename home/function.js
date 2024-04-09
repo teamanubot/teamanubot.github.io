@@ -12,19 +12,19 @@ function closeOverlay() {
 }
 
 function playOverlay() {
-    audio1.play(); /*.catch(error => {
+    audio1.play().catch(error => {
         if (error.name === 'NotAllowedError') {
-            audio1.requestAutoplay();
+            audio1.play();
         }
-    }); */
+    });
     closeOverlay();
 }
 
-/* function autoPlayAudio() {
+function autoPlayAudio() {
     audio1.play().catch(error => {
         showPlayOverlay();
         if (error.name === 'NotAllowedError') {
-            audio1.requestAutoplay();
+            audio1.play();
         }
     });
-} */
+}
