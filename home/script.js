@@ -31,3 +31,9 @@ audio3.addEventListener("ended", function() {
 audio4.addEventListener("ended", function() {
     audio1.play();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (!audio1.paused && audio1.autoplay) {
+        closeOverlay();
+    }
+});
