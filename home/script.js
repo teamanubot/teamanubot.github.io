@@ -7,14 +7,14 @@ window.onload = function() {
 };*/
 
 window.onload = function() {
-    const navigationEntries = performance.getEntriesByType("navigation");
+    /* const navigationEntries = performance.getEntriesByType("navigation");
     for (const entry of navigationEntries) {
         const navigationType = entry.type;
         if (navigationType === "reload" || navigationType === "back_forward" || navigationType === "reserved") {
             showPlayOverlay();
             break;
         }
-    }
+    } */
     autoPlayAudio();
 };
 

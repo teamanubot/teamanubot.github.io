@@ -11,20 +11,20 @@ function closeOverlay() {
     document.getElementById("playOverlay").style.display = "none";
 }
 
-function playOverlay() {
+/* function playOverlay() {
     audio1.play().catch(error => {
         if (error.name === 'NotAllowedError') {
-            audio1.play();
+            audio1.requestAutoplay();
         }
     });
     closeOverlay();
-}
+} */
 
 function autoPlayAudio() {
-    audio1.autoplay = true;
-    audio1.play().catch(error => {
+    audio1.play().catch(error => {        
         if (error.name === 'NotAllowedError') {
             showPlayOverlay();
         }
     });
+    closeOverlay();
 }
