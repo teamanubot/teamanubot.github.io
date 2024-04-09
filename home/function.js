@@ -21,10 +21,10 @@ function playOverlay() {
 }
 
 function autoPlayAudio() {
+    audio1.autoplay = true;
     audio1.play().catch(error => {
-        showPlayOverlay();
         if (error.name === 'NotAllowedError') {
-            audio1.play();
+            showPlayOverlay();
         }
     });
 }
