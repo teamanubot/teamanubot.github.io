@@ -4,7 +4,11 @@ const audio3 = document.getElementById("audio3");
 const audio4 = document.getElementById("audio4");
 
 function showPlayOverlay() {
-    document.getElementById("playOverlay").style.display = "block";
+    if (audio1.paused || !audio1.autoplay) {
+        document.getElementById("playOverlay").style.display = "block";
+    } else {
+        document.getElementById("playOverlay").style.display = "none";
+    }
 }
 
 function closeOverlay() {

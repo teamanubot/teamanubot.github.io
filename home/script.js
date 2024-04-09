@@ -1,13 +1,19 @@
-/* Versi Kuno
-window.onload = function() {
-    if (performance.navigation.type === 1 || performance.navigation.type === 2) {
-        showPlayOverlay();
-    }
-    playOverlay();
-};*/
-
 window.onload = function() {
     autoPlayAudio();
+    window.addEventListener('popstate', function(event) {
+        if (audio1.paused || !audio1.autoplay) {
+            showPlayOverlay();
+        } else {
+            closeOverlay();
+        }
+    });
+    window.addEventListener('pageshow', function(event) {
+        if (audio1.paused || !audio1.autoplay) {
+            showPlayOverlay();
+        } else {
+            closeOverlay();
+        }
+    });
 };
 
 audio1.addEventListener("ended", function() {
