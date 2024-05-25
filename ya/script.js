@@ -6,7 +6,7 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
     quality: 10,
     width: 200,
     height: 200,
-    workerScript: 'https://cdn.jsdelivr.net/npm/gif.js.optimized/dist/gif.worker.js' // Ubah jalur sesuai dengan CDN yang Anda gunakan
+    workerScript: './gif.worker.js'
   });
 
   const animationElement = document.getElementById('animation');
