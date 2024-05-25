@@ -6,37 +6,22 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
       height: 200
     });
   
-    const lngkrn = document.querySelector('.lngkrn');
-    const rect = lngkrn.getBoundingClientRect();
-    const canvas = document.createElement('canvas');
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-    const ctx = canvas.getContext('2d');
-  
-    let startTime = null;
+    const animationElement = document.getElementById('animation');
     const duration = 10000;
-    const fps = 60;
+    const fps = 10;
     const totalFrames = (duration / 1000) * fps;
+    let frame = 0;
   
-    function captureFrame(time) {
-      if (!startTime) startTime = time;
-      const elapsed = time - startTime;
-      const progress = elapsed / duration;
-  
-      lngkrn.style.transform = `rotate(${-360 * progress}deg)`;
-      const img = lngkrn.querySelector('img');
-      img.style.transform = `translateY(${(-5 + 15 * Math.sin(progress * Math.PI * 2 * 10))}%)`;
-      
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(lngkrn, 0, 0, canvas.width, canvas.height);
-  
-      gif.addFrame(ctx, {copy: true, delay: 1000 / fps});
-  
-      if (elapsed < duration) {
-        requestAnimationFrame(captureFrame);
-      } else {
-        gif.render();
-      }
+    function captureFrame() {
+      html2canvas(animationElement, { backgroundColor: null }).then(canvas => {
+        gif.addFrame(canvas, { copy: true, delay: 1000 / fps });
+        frame++;
+        if (frame < totalFrames) {
+          requestAnimationFrame(captureFrame);
+        } else {
+          gif.render();
+        }
+      });
     }
   
     gif.on('finished', function(blob) {
@@ -49,5 +34,5 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
       document.body.removeChild(a);
     });
   
-    requestAnimationFrame(captureFrame);
-  });    
+    captureFrame();
+  });  
