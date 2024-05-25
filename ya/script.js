@@ -1,7 +1,9 @@
 document.getElementById('downloadBtn').addEventListener('click', function() {
     const gif = new GIF({
       workers: 2,
-      quality: 10
+      quality: 10,
+      width: 200,
+      height: 200
     });
   
     const lngkrn = document.querySelector('.lngkrn');
@@ -13,20 +15,22 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
   
     let startTime = null;
     const duration = 10000;
+    const fps = 60;
+    const totalFrames = (duration / 1000) * fps;
   
     function captureFrame(time) {
       if (!startTime) startTime = time;
       const elapsed = time - startTime;
-      lngkrn.style.animation = 'none';
-      lngkrn.style.transform = `rotate(${-360 * (elapsed / duration)}deg)`;
+      const progress = elapsed / duration;
+  
+      lngkrn.style.transform = `rotate(${-360 * progress}deg)`;
       const img = lngkrn.querySelector('img');
-      img.style.animation = 'none';
-      img.style.transform = `translateY(${(-5 + 15 * (elapsed % 600) / 600)}%)`;
+      img.style.transform = `translateY(${(-5 + 15 * Math.sin(progress * Math.PI * 2 * 10))}%)`;
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(lngkrn, 0, 0, canvas.width, canvas.height);
   
-      gif.addFrame(ctx, {copy: true, delay: 1000 / 60});
+      gif.addFrame(ctx, {copy: true, delay: 1000 / fps});
   
       if (elapsed < duration) {
         requestAnimationFrame(captureFrame);
@@ -46,4 +50,4 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
     });
   
     requestAnimationFrame(captureFrame);
-  });  
+  });    
