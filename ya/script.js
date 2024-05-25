@@ -15,7 +15,7 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
   let frame = 0;
 
   function captureFrame() {
-    html2canvas(animationElement, { backgroundColor: null }).then(canvas => {
+    html2canvas(animationElement, { backgroundColor: null, willReadFrequently: true }).then(canvas => {
       gif.addFrame(canvas, { copy: true, delay: 1000 / fps });
       frame++;
       console.log(`Captured frame ${frame} of ${totalFrames}`);
