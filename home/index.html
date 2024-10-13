@@ -13,6 +13,12 @@
     <!-- Noscript CSS -->
     <noscript><link rel="stylesheet" href="SatuUntukSemua/assets/css/noscript.css" /></noscript>
 
+    <style>
+        #player {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -142,16 +148,13 @@
             <div class="background-gif-container">
                 <img src="https://media.tenor.com/2h5AqdpGfi0AAAAC/arlecchino-genshin-impact.gif" alt="Background GIF" class="background-gif">
                 <div class="play-button-container">
-                    <button class="play-button" onclick="autoPlayAudio()">Play Audio</button>
+                    <button class="play-button" onclick="playPlaylist()">Play Audio</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <audio id="audio1" src="SatuUntukSemua/music/C-KM-AY.mp3" style="display: none;"></audio>
-    <audio id="audio2" src="SatuUntukSemua/music/A&U-AR.mp3" style="display: none;"></audio>
-    <audio id="audio3" src="SatuUntukSemua/music/Y-AYWN.mp3" style="display: none;"></audio>
-    <audio id="audio4" src="SatuUntukSemua/music/LPOH.mp3" style="display: none;"></audio>
+    <div id="player"></div>
 
     <!-- Scripts -->
     <script data-cfasync="false" src="SatuUntukSemua/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

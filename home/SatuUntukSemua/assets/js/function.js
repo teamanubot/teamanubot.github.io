@@ -7,6 +7,55 @@ const audioList = [
 
 let statusPlay = false;
 
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+var videoIds = [
+    'l7mFdh37SLc',
+    '0YF8vecQWYs',
+    'aKV3DIXJfT0',
+    'tYZIlPMNjwE',
+];
+var randomizedVideoIds = shuffleArray(videoIds.slice());
+var currentVideoIndex = 0;
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: randomizedVideoIds[currentVideoIndex],
+        playerVars: {
+            'playsinline': 1,
+            'autoplay': 1,
+            'controls': 0,
+            'showinfo': 0
+        },
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.ENDED) {
+        currentVideoIndex = (currentVideoIndex + 1) % randomizedVideoIds.length;
+        player.loadVideoById(randomizedVideoIds[currentVideoIndex]);
+    }
+}
+
+function playPlaylist() {
+    player.playVideo();
+}
+
 function showPlayOverlay() {
     document.getElementById("playOverlay").style.display = "block";
 }
