@@ -6,6 +6,7 @@ const audioList = [
 ];
 
 let statusPlay = false;
+let statusPlay2 = false;
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -49,6 +50,10 @@ function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
         currentVideoIndex = (currentVideoIndex + 1) % randomizedVideoIds.length;
         player.loadVideoById(randomizedVideoIds[currentVideoIndex]);
+    } 
+    if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+        statusPlay = false;
+        showPlayOverlay();
     }
 }
 
@@ -63,6 +68,7 @@ function autoPlayIframe() {
         statusPlay = false;
     }
 }
+
 
 function showPlayOverlay() {
     document.getElementById("playOverlay").style.display = "block";
