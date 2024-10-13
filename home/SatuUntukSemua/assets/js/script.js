@@ -1,5 +1,6 @@
 window.onload = function() {
-    autoPlayAudio();
+    autoPlayAudio()
+    playPlaylist();
     window.addEventListener('popstate', function(event) {
         if (!statusPlay) {
             showPlayOverlay();
