@@ -6,7 +6,6 @@ const audioList = [
 ];
 
 let statusPlay = false;
-let statusPlay2 = false;
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -54,6 +53,9 @@ function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
         statusPlay = false;
         showPlayOverlay();
+    } else {
+        statusPlay = true;
+        closeOverlay();
     }
 }
 
