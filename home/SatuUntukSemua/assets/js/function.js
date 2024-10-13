@@ -52,9 +52,15 @@ function onPlayerStateChange(event) {
     }
 }
 
-function playPlaylist() {
+function autoPlayIframe() {
+    if (statusPlay) return;
+    statusPlay = true;
     if (player && player.playVideo) {
         player.playVideo();
+        closeOverlay();
+    } else {
+        showPlayOverlay();
+        statusPlay = false;
     }
 }
 
