@@ -1,21 +1,18 @@
 window.onload = function() {
+    statusPlay = false;
     autoPlayAudio();
     autoPlayIframe();
-    window.addEventListener('popstate', function(event) {
-        if (!statusPlay) {
-            showPlayOverlay();
-        } else {
-            closeOverlay();
-        }
-    });
-    window.addEventListener('pageshow', function(event) {
-        if (!statusPlay) {
-            showPlayOverlay();
-        } else {
-            closeOverlay();
-        }
-    });
+    window.addEventListener('popstate', handleOverlayDisplay);
+    window.addEventListener('pageshow', handleOverlayDisplay);
 };
+
+function handleOverlayDisplay() {
+    if (!statusPlay) {
+        showPlayOverlay();
+    } else {
+        closeOverlay();
+    }
+}
 
 audioList.forEach((audio, index) => {
     audio.addEventListener("ended", function() {
