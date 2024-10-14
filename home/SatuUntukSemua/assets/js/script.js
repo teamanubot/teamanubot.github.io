@@ -1,6 +1,5 @@
 window.onload = function() {
     statusPlay = false;
-    autoPlayAudio();
     autoPlayIframe();
     window.addEventListener('popstate', handleOverlayDisplay);
     window.addEventListener('pageshow', handleOverlayDisplay);
