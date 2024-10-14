@@ -78,14 +78,22 @@ function playVideoWithPromise(player) {
 function autoPlayIframe() {
     if (statusPlay) return;
     statusPlay = true;
-    player.playVideo().then(() => {
-        closeOverlay();
-    }).catch(error => {
-        if (error.name === 'NotAllowedError') {
-            statusPlay = false;
-            showPlayOverlay();
-        }
-    });
+
+    if (player && player.playVideo) {
+        playVideoWithPromise(player).then(() => {
+            closeOverlay();
+        }).catch(error => {
+            if (error.name === 'NotAllowedError') {
+                statusPlay = false;
+                showPlayOverlay();
+            } else {
+                console.error('Terjadi kesalahan saat memutar video', error);
+            }
+        });
+    } else {
+        showPlayOverlay();
+        statusPlay = false;
+    }
 }
 
 function autoPlayAudio() {
