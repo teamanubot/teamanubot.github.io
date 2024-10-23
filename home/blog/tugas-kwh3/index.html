@@ -11,9 +11,42 @@
             margin: 20px;
         }
 
-        h1, h2 {
-            color: #f57c00;
+        .header {
+            background-color: rgba(173, 216, 230, 1);
+            color: #fff;
+            padding: 10px 0;
             text-align: center;
+            font-size: 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .header.scrolled {
+            background-color: rgba(173, 216, 230, 0.7);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .intro-section, .business-description-section {
+            border: 2px solid #2196f3;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e3f2fd;
+            margin-top: 30px;
+        }
+
+        .intro-section h2, .business-description-section h2 {
+            color: #0d47a1;
+        }
+
+        .intro-section p, .business-description-section p {
+            color: #0d47a1;
         }
 
         .canvas-container {
@@ -30,6 +63,7 @@
             padding: 10px;
             background-color: #f0f0f0;
             border: 1px solid #ddd;
+            box-sizing: border-box;
         }
 
         .canvas-header label {
@@ -115,16 +149,27 @@
 </head>
 
 <body>
-    <h1>FiixHome</h1>
-    <h2>Aplikasi Jasa Perbaikan Elektronik Rumah Tangga</h2>
-    <h3 class="align-center">Problem-Solution Canvas</h3>
+    <div class="header" id="header">
+        <h1>FiixHome - Aplikasi Jasa Perbaikan Elektronik Rumah Tangga</h1>
+    </div>
+
+    <section class="intro-section">
+        <h2 class="align-center">Pendahuluan</h2>
+        <p>Problem Solution Canvas (PSC) adalah alat untuk menganalisis masalah yang dihadapi oleh pelanggan dan mencari solusi efektif yang dapat ditawarkan oleh bisnis. Pada halaman ini, FiixHome menggunakan PSC untuk memahami kebutuhan pasar dan menawarkan solusi yang tepat dalam bidang perbaikan elektronik rumah tangga.</p>
+    </section>
+    
+    <section class="business-description-section">
+        <h2 class="align-center">Deskripsi Ide Bisnis</h2>
+        <p>FiixHome adalah aplikasi yang menawarkan solusi bagi orang-orang yang membutuhkan jasa perbaikan elektronik rumah tangga. Dengan memanfaatkan teknologi mobile, aplikasi ini memungkinkan pengguna untuk menemukan teknisi terpercaya dan memesan jasa perbaikan dengan mudah dan cepat. Layanan ini berfokus pada kenyamanan pelanggan dengan fitur seperti rating teknisi, ulasan pelanggan, dan estimasi biaya yang transparan.</p>
+        <p>Ide bisnis ini berangkat dari kebutuhan akan jasa perbaikan yang mudah diakses, terpercaya, dan efisien, yang tidak selalu tersedia melalui metode konvensional seperti rekomendasi dari mulut ke mulut atau mencari teknisi di internet tanpa ulasan yang jelas.</p>
+    </section>
 
     <div class="canvas-header">
         <div class="placeholder-group">
             <label for="name">Name :</label>
             <span class="placeholder">RIVAI</span>
         </div>
-    
+        <h3 class="align-center">Problem Solution Canvas</h3>
         <div class="placeholder-group">
             <label for="business">Business :</label>
             <span class="placeholder">FiixHome (Aplikasi Jasa Perbaikan Elektronik Rumah Tangga)</span>
@@ -171,7 +216,7 @@
     </div>
 
     <div class="executive-summary">
-        <h3>Executive Summary</h3>
+        <h3 class="align-center">Executive Summary</h3>
         <img class="logo" src="logo.png" alt="FiixHome Logo" width="1024" height="1024">
         <p><strong>Nama Bisnis :</strong> FiixHome - Aplikasi Jasa Perbaikan Elektronik Rumah Tangga</p>
         <p><strong>Deskripsi Bisnis :</strong> FiixHome adalah aplikasi mobile yang memudahkan pengguna dalam mencari, memesan, dan menilai jasa teknisi untuk memperbaiki barang elektronik rumah tangga, seperti AC, TV, mesin cuci, dan perangkat lainnya.</p>
@@ -181,11 +226,26 @@
 
     <div class="align-center">
         <footer>
-            <p class="biru-navy">22 Oktober 2024 - Universitas Esa Unggul</p>
+            <p>
+                <a class="biru-navy" href="https://teamanubot.github.io/home" target="_blank">
+                    22 Oktober 2024 - Universitas Esa Unggul
+                </a>
+            </p>
         </footer>
         <div id="player"></div>
-    </div>
-    
+    </div>    
+
+    <script>
+        window.onscroll = function () {
+            var header = document.getElementById("header");
+            if (window.pageYOffset > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        };
+    </script>
+
     <script data-cfasync="false" src="../../SatuUntukSemua/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="../../SatuUntukSemua/assets/js/jquery.min.js"></script>
     <script src="../../SatuUntukSemua/assets/js/jquery.scrollex.min.js"></script>
