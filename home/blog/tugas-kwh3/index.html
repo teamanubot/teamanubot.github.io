@@ -210,7 +210,20 @@
 
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 2fr;
+                grid-template-columns: 1fr;
+            }
+
+            .canvas-header {
+                flex-direction: column;
+            }
+
+            .canvas-header h3 {
+                order: -1;
+                margin-bottom: 10px;
+            }
+
+            .placeholder-group {
+                margin-bottom: 5px;
             }
 
             .close-button {
