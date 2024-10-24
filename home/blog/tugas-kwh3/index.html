@@ -197,7 +197,7 @@
 
         .background-gif {
             width: 100%;
-            height: 100%;
+            height: auto;
         }
 
         .background-gif-container {
@@ -213,21 +213,21 @@
                 grid-template-columns: 1fr;
             }
 
-            /*.canvas-header {
-                flex-direction: column;
+            .overlay {
+                width: calc(100% - 40px);
+                max-width: none;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
 
-            .canvas-header h3 {
-                order: -1;
-                margin-bottom: 10px;
+            .background-gif-container {
+                width: 100%;
+                height: auto;
             }
 
-            .placeholder-group {
-                margin-bottom: 5px;
-            }*/
-
-            .close-button {
-                right: 50px;
+            .background-gif {
+                width: 100%;
+                height: auto;
             }
         }
     </style>
@@ -371,21 +371,21 @@
         };
 
         function rearrangeForMobile() {
-        const screenWidth = window.innerWidth;
-        const pscTitle = document.getElementById("psc-title");
-        const canvasHeader = document.querySelector(".canvas-header");
-        
-        if (screenWidth < 768) {
-            canvasHeader.parentElement.insertBefore(pscTitle, canvasHeader);
-        } else {
-            if (canvasHeader.contains(pscTitle) === false) {
-                canvasHeader.insertBefore(pscTitle, canvasHeader.firstElementChild.nextElementSibling);
+            const screenWidth = window.innerWidth;
+            const pscTitle = document.getElementById("psc-title");
+            const canvasHeader = document.querySelector(".canvas-header");
+            
+            if (screenWidth < 768) {
+                canvasHeader.parentElement.insertBefore(pscTitle, canvasHeader);
+            } else {
+                if (canvasHeader.contains(pscTitle) === false) {
+                    canvasHeader.insertBefore(pscTitle, canvasHeader.firstElementChild.nextElementSibling);
+                }
             }
         }
-    }
 
-    window.addEventListener('load', rearrangeForMobile);
-    window.addEventListener('resize', rearrangeForMobile);
+        window.addEventListener('load', rearrangeForMobile);
+        window.addEventListener('resize', rearrangeForMobile);
     </script>
 
     <script data-cfasync="false" src="../../SatuUntukSemua/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
