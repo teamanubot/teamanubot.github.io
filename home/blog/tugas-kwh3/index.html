@@ -213,7 +213,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .canvas-header {
+            /*.canvas-header {
                 flex-direction: column;
             }
 
@@ -224,7 +224,7 @@
 
             .placeholder-group {
                 margin-bottom: 5px;
-            }
+            }*/
 
             .close-button {
                 right: 50px;
@@ -251,15 +251,17 @@
  
     <br>
 
-    <div class="canvas-header">
-        <div class="placeholder-group">
-            <label for="name">Name :</label>
-            <span class="placeholder">RIVAI</span>
-        </div>
-        <h3 class="align-center">Problem Solution Canvas</h3>
-        <div class="placeholder-group">
-            <label for="business">Business :</label>
-            <span class="placeholder">FiixHome (Aplikasi Jasa Perbaikan Elektronik Rumah Tangga)</span>
+    <div id="canvas-container">
+        <div class="canvas-header">
+            <div class="placeholder-group">
+                <label for="name">Name :</label>
+                <span class="placeholder">RIVAI</span>
+            </div>
+            <h3 id="psc-title" class="align-center">Problem Solution Canvas</h3>
+            <div class="placeholder-group">
+                <label for="business">Business :</label>
+                <span class="placeholder">FiixHome (Aplikasi Jasa Perbaikan Elektronik Rumah Tangga)</span>
+            </div>
         </div>
     </div>
        
@@ -367,6 +369,23 @@
                 header.classList.remove("scrolled");
             }
         };
+
+        function rearrangeForMobile() {
+        const screenWidth = window.innerWidth;
+        const pscTitle = document.getElementById("psc-title");
+        const canvasHeader = document.querySelector(".canvas-header");
+        
+        if (screenWidth < 768) {
+            canvasHeader.parentElement.insertBefore(pscTitle, canvasHeader);
+        } else {
+            if (canvasHeader.contains(pscTitle) === false) {
+                canvasHeader.insertBefore(pscTitle, canvasHeader.firstElementChild.nextElementSibling);
+            }
+        }
+    }
+
+    window.addEventListener('load', rearrangeForMobile);
+    window.addEventListener('resize', rearrangeForMobile);
     </script>
 
     <script data-cfasync="false" src="../../SatuUntukSemua/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
