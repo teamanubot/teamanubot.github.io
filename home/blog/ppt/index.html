@@ -39,46 +39,24 @@
         .slide3-background {
             background: linear-gradient(135deg, #1a4e85, #4caf50);
             color: #ffffff;
-        }
-
-        .icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-
-        .flex-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .flex-item {
-            width: 48%;
-        }
-
-        .large-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #4caf50;
+            text-align: center;
         }
 
         .logo {
+            display: block;
+            margin: 30px auto;
+            width: 150px; /* Perbesar ukuran logo */
+        }
+
+        .align-center {
             text-align: center;
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 80px;
         }
 
-        .intro {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .hidden {
-            display: none;
+        .slide3-image {
+            max-width: 80%;
+            height: auto;
+            margin: 20px auto;
+            display: block;
         }
     </style>
 </head>
@@ -88,69 +66,21 @@
         <div class="slides">
             <!-- Slide 1 -->
             <section class="slide-background">
-                <div class="intro" id="intro">
-                    <h1 style="text-align: center;">FiixHome</h1>
-                    <h3>Aplikasi Jasa Perbaikan Elektronik</h3>
-                    <p class="highlight">Solusi Mudah, Cepat, dan Terpercaya</p>
-                    <br></br>
-                    <img src="FiixHome.png" alt="Logo FiixHome" class="logo" />
-                </div>
-                <div id="slide1-content" class="hidden">
-                    <h1>Pendahuluan dan Masalah</h1>
-                    <div class="flex-container">
-                        <div class="flex-item">
-                            <ul>
-                                <li><strong>Masalah:</strong> Sulitnya mencari teknisi terpercaya untuk perbaikan elektronik.</li>
-                                <li>Ketidakpastian harga dan kualitas layanan.</li>
-                                <li>Waktu pelanggan terbuang untuk mencari teknisi.</li>
-                            </ul>
-                        </div>
-                        <div class="flex-item">
-                            <img src="prustasi.png" alt="Ikon Frustrasi" />
-                        </div>
-                    </div>
-                </div>
+                <h3 class="align-center">Nama Bisnis : FiixHome</h1>
+                <h3 class="align-center">Nama Pembuat : RIVAI</h3>
+                <img src="FiixHome.png" alt="FiixHome Logo" style="width: 50%;">
             </section>
 
             <!-- Slide 2 -->
             <section class="slide2-background">
-                <h1>Solusi dan Keunggulan FiixHome</h1>
-                <div class="flex-container">
-                    <div class="flex-item">
-                        <h2>Solusi</h2>
-                        <ul>
-                            <li><span class="icon">🔍</span>Pencarian teknisi mudah dan cepat.</li>
-                            <li><span class="icon">💰</span>Estimasi biaya transparan.</li>
-                            <li><span class="icon">⭐</span>Rating dan ulasan teknisi.</li>
-                        </ul>
-                    </div>
-                    <div class="flex-item">
-                        <h2>Keunggulan</h2>
-                        <ul>
-                            <li><span class="icon">📈</span>Meningkatkan efisiensi hingga <span class="large-number">50%</span>.</li>
-                            <li><span class="icon">😊</span>Kepuasan pelanggan meningkat hingga <span class="large-number">80%</span>.</li>
-                        </ul>
-                    </div>
-                </div>
+                <h2 class="align-center">Deskripsi bisnis</h2>
+                <p>FiixHome adalah aplikasi mobile yang menyediakan solusi praktis untuk menemukan dan memesan jasa teknisi terpercaya guna memperbaiki barang elektronik rumah tangga seperti AC, TV, dan mesin cuci. Dengan fitur seperti ulasan pelanggan, rating teknisi, serta estimasi biaya transparan, aplikasi ini mempermudah pengguna dalam mendapatkan layanan yang nyaman, cepat, dan efisien.</p>
             </section>
 
             <!-- Slide 3 -->
             <section class="slide3-background">
-                <h1>Dampak dan Ringkasan Eksekutif</h1>
-                <div class="flex-container">
-                    <div class="flex-item">
-                        <h2>Dampak Positif</h2>
-                        <ul>
-                            <li>Waktu lebih hemat.</li>
-                            <li>Kualitas layanan terjamin.</li>
-                            <li>Pelanggan merasa lebih percaya dan nyaman.</li>
-                        </ul>
-                    </div>
-                    <div class="flex-item">
-                        <h2>Ringkasan Eksekutif</h2>
-                        <p>FiixHome adalah solusi modern yang membantu pelanggan menemukan jasa teknisi terbaik dengan mudah, transparan, dan berkualitas.</p>
-                    </div>
-                </div>
+                <h1 class="align-center">Problem Solution Canvas</h1>
+                <img src="psc.png" alt="Problem Solution Canvas" class="slide3-image">
             </section>
         </div>
     </div>
@@ -164,20 +94,6 @@
             transition: 'slide', // Transition effect
             backgroundTransition: 'fade',
             transitionSpeed: 'fast',
-        });
-
-        const intro = document.getElementById('intro');
-        const slide1Content = document.getElementById('slide1-content');
-
-        document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            intro.classList.add('hidden');
-            slide1Content.classList.remove('hidden');
-        });
-
-        document.addEventListener('click', () => {
-            intro.classList.remove('hidden');
-            slide1Content.classList.add('hidden');
         });
     </script>
 </body>
